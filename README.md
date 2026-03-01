@@ -1,17 +1,71 @@
 # DermaCare AI Project
 
 ## Description
-AI-powered skin disease detection web app using Flask and TensorFlow.  
-Supports predictions for Acne, Drug Reaction, Eczema, and Psoriasis.
+**DermaCare AI** is a web application that predicts skin diseases from images.  
+The app classifies images into **Acne, Drug Reaction, Eczema, or Psoriasis** and provides care suggestions to the user.
+
+## Features
+- Upload skin images and get predictions
+- Confidence score for each prediction
+- Care suggestions for each detected disease
+- Dashboard showing analytics and disease frequency
+- History of all predictions stored in database
 
 ## Tech Stack
-- Python, Flask
-- TensorFlow/Keras
-- SQLite Database
-- HTML/CSS for frontend
+- **Backend:** Python, Flask  
+- **AI/ML:** TensorFlow, Keras  
+- **Database:** SQLite  
+- **Frontend:** HTML, CSS, Bootstrap  
+- **Environment:** Python virtual environment (`derma_env`)  
 
-## How to Run
-1. Clone repo: `git clone https://github.com/Heenyanshree/DermaCare_AI_Project.git`
-2. Create virtual environment: `python -m venv derma_env`
-3. Install dependencies: `pip install -r requirements.txt`
-4. Run app: `python backend/app.py`
+## Installation & Setup
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/Heenyanshree/DermaCare_AI_Project.git
+
+2. Navigate into project directory:
+          cd DermaCare_AI_Project
+
+3. Create & activate virtual environment:
+
+        python -m venv derma_env
+       source derma_env/Scripts/activate   # For Windows
+
+4. Install dependencies:
+
+       pip install -r requirements.txt
+
+5. Run the Flask app:
+
+        python backend/app.py
+
+6. Open your browser and go to:
+
+        http://127.0.0.1:5000
+
+
+Folder Structure
+DermaCare_AI_Project/
+├── backend/         
+│   ├── app.py       
+│   ├── dermacare.db 
+│   ├── static/      
+│   └── templates/   
+├── frontend/        
+├── Dataset/         
+├── model/           
+├── derma_env/       
+├── train_model.py   
+├── test_prediction.py 
+├── requirements.txt 
+└── README.md  
+
+
+Usage
+
+Upload a skin image in the app
+View predicted disease with confidence score and suggestions
+Check prediction history
+Explore analytics dashboard
+
+
