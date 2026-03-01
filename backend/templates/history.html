@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction History - DermaCare AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f6f9; font-family: Arial, sans-serif; padding: 20px; }
+        h1 { text-align: center; margin-bottom: 30px; color: #343a40; }
+        table { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        th, td { text-align: center; vertical-align: middle !important; }
+        tbody tr:nth-child(even) { background-color: #f2f2f2; }
+        .img-thumb { max-width: 100px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Prediction History</h1>
+
+    <div class="text-center mb-4">
+        <a href="/" class="btn btn-secondary">Back to Home</a>
+        <a href="/dashboard" class="btn btn-primary">View Dashboard</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Date & Time</th>
+                    <th>Disease</th>
+                    <th>Confidence (%)</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>
+                        {% if row[4] %}
+                        <img src="{{ url_for('static', filename=row[4]) }}" class="img-thumb">
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                {% if data|length == 0 %}
+                <tr>
+                    <td colspan="5">No predictions yet.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

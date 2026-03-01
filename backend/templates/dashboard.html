@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - DermaCare AI</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f8f9fa; padding: 20px; }
+        h1 { text-align: center; margin-bottom: 30px; color: #343a40; }
+        .card { margin: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 10px; }
+        .chart-container { margin-top: 40px; }
+        .btn-custom { margin-top: 20px; }
+        @media (max-width: 768px) { .card-deck { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <h1>DermaCare AI - Admin Dashboard</h1>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 col-sm-12">
+                <div class="card p-3" style="background-color:#3498db; color:white;">
+                    <h4>Total Predictions</h4>
+                    <h2>{{ total_predictions }}</h2>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="card p-3" style="background-color:#2ecc71; color:white;">
+                    <h4>Most Common Disease</h4>
+                    <h2>{{ most_common_disease }} ({{ most_common_count }})</h2>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="card p-3" style="background-color:#f39c12; color:white;">
+                    <h4>Average Confidence</h4>
+                    <h2>{{ avg_confidence }}%</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3 class="text-center mt-4">Disease Frequency</h3>
+            <canvas id="diseaseChart"></canvas>
+
+            <h3 class="text-center mt-4">Disease Distribution (Pie)</h3>
+            <canvas id="diseasePieChart"></canvas>
+        </div>
+
+        <div class="text-center btn-custom">
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+            <a href="/history" class="btn btn-info">View Prediction History</a>
+        </div>
+    </div>
+
+    <script>
+        // Bar Chart
+        const ctx = document.getElementById('diseaseChart').getContext('2d');
+        const labels = [{% for d,c in chart_data %}"{{ d }}",{% endfor %}];
+        const dataVals = [{% for d,c in chart_data %}{{ c }},{% endfor %}];
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: { labels: labels, datasets:[{label:'Number of Cases', data:dataVals, backgroundColor:['rgba(54,162,235,0.6)','rgba(255,99,132,0.6)','rgba(255,206,86,0.6)','rgba(75,192,192,0.6)'], borderColor:['rgba(54,162,235,1)','rgba(255,99,132,1)','rgba(255,206,86,1)','rgba(75,192,192,1)'], borderWidth:1}]},
+            options: { responsive:true, plugins:{ legend:{display:false}, title:{display:true, text:'Disease Frequency in Predictions'} }, scales:{y:{beginAtZero:true, precision:0}}}
+        });
+
+        // Pie Chart
+        const pieCtx = document.getElementById('diseasePieChart').getContext('2d');
+        new Chart(pieCtx, {
+            type: 'pie',
+            data: { labels: labels, datasets:[{label:'Disease Distribution', data:dataVals, backgroundColor:['rgba(54,162,235,0.6)','rgba(255,99,132,0.6)','rgba(255,206,86,0.6)','rgba(75,192,192,0.6)'], borderColor:['rgba(54,162,235,1)','rgba(255,99,132,1)','rgba(255,206,86,1)','rgba(75,192,192,1)'], borderWidth:1}]},
+            options: { responsive:true }
+        });
+    </script>
+</body>
+</html>

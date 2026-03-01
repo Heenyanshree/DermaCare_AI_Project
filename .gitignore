@@ -1,0 +1,12 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore virtual environment
+derma_env/
+
+# Ignore dataset
+Dataset/
+
+# Ignore model weights (optional, agar large ho)
+model/
