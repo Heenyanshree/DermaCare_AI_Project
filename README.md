@@ -46,20 +46,23 @@ The app classifies images into **Acne, Drug Reaction, Eczema, or Psoriasis** and
 
 Folder Structure
 DermaCare_AI_Project/
-├── backend/         
-│   ├── app.py       
-│   ├── dermacare.db 
-│   ├── static/      
-│   └── templates/   
-├── frontend/        
-├── Dataset/         
-├── model/           
-├── derma_env/       
-├── train_model.py   
-├── test_prediction.py 
-├── requirements.txt 
-└── README.md  
-
+│
+├── backend/          # Flask backend and database
+│   ├── app.py
+│   ├── dermacare.db
+│   └── templates/
+│
+├── frontend/         # Frontend files (HTML/CSS/JS)
+│
+├── model/            # Trained AI model
+│   └── dermacare_model.h5
+│
+├── Dataset/          # Training dataset (optional)
+├── derma_env/        # Virtual environment (ignored in Git)
+├── static/           # Uploaded images and assets
+├── train_model.py    # Model training script
+├── test_prediction.py# Prediction testing script
+└── requirements.txt
 
 Usage
 
@@ -67,5 +70,8 @@ Upload a skin image in the app
 View predicted disease with confidence score and suggestions
 Check prediction history
 Explore analytics dashboard
+
+
+
 
 
