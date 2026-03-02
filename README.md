@@ -15,7 +15,7 @@ The app classifies images into **Acne, Drug Reaction, Eczema, or Psoriasis** and
 - **Backend:** Python, Flask  
 - **AI/ML:** TensorFlow, Keras  
 - **Database:** SQLite  
-- **Frontend:** HTML, CSS, Bootstrap  
+- **Frontend:** HTML, CSS, 
 - **Environment:** Python virtual environment (`derma_env`)  
 
 ## Installation & Setup
@@ -47,18 +47,22 @@ The app classifies images into **Acne, Drug Reaction, Eczema, or Psoriasis** and
 Folder Structure
 DermaCare_AI_Project/
 
+
 │
 ├── backend/          # Flask backend and database
 │   ├── app.py
 │   ├── dermacare.db
 │   └── templates/
 
+
 │
 ├── frontend/         # Frontend files (HTML/CSS/JS)
 
 │
+
 ├── model/            # Trained AI model
 │   └── dermacare_model.h5
+
 
 │
 ├── Dataset/          # Training dataset (optional)
